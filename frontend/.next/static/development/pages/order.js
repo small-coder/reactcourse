@@ -855,17 +855,6 @@ module.exports = __webpack_require__(/*! core-js/library/fn/is-iterable */ "./no
 
 /***/ }),
 
-/***/ "./node_modules/@babel/runtime-corejs2/core-js/object/assign.js":
-/*!**********************************************************************!*\
-  !*** ./node_modules/@babel/runtime-corejs2/core-js/object/assign.js ***!
-  \**********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! core-js/library/fn/object/assign */ "./node_modules/core-js/library/fn/object/assign.js");
-
-/***/ }),
-
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/object/create.js":
 /*!**********************************************************************!*\
   !*** ./node_modules/@babel/runtime-corejs2/core-js/object/create.js ***!
@@ -7138,19 +7127,6 @@ module.exports = __webpack_require__(/*! ../modules/core.is-iterable */ "./node_
 
 /***/ }),
 
-/***/ "./node_modules/core-js/library/fn/object/assign.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/core-js/library/fn/object/assign.js ***!
-  \**********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(/*! ../../modules/es6.object.assign */ "./node_modules/core-js/library/modules/es6.object.assign.js");
-module.exports = __webpack_require__(/*! ../../modules/_core */ "./node_modules/core-js/library/modules/_core.js").Object.assign;
-
-
-/***/ }),
-
 /***/ "./node_modules/core-js/library/fn/object/create.js":
 /*!**********************************************************!*\
   !*** ./node_modules/core-js/library/fn/object/create.js ***!
@@ -8625,52 +8601,6 @@ module.exports.f = function (C) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/library/modules/_object-assign.js":
-/*!****************************************************************!*\
-  !*** ./node_modules/core-js/library/modules/_object-assign.js ***!
-  \****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-// 19.1.2.1 Object.assign(target, source, ...)
-var getKeys = __webpack_require__(/*! ./_object-keys */ "./node_modules/core-js/library/modules/_object-keys.js");
-var gOPS = __webpack_require__(/*! ./_object-gops */ "./node_modules/core-js/library/modules/_object-gops.js");
-var pIE = __webpack_require__(/*! ./_object-pie */ "./node_modules/core-js/library/modules/_object-pie.js");
-var toObject = __webpack_require__(/*! ./_to-object */ "./node_modules/core-js/library/modules/_to-object.js");
-var IObject = __webpack_require__(/*! ./_iobject */ "./node_modules/core-js/library/modules/_iobject.js");
-var $assign = Object.assign;
-
-// should work with symbols and should have deterministic property order (V8 bug)
-module.exports = !$assign || __webpack_require__(/*! ./_fails */ "./node_modules/core-js/library/modules/_fails.js")(function () {
-  var A = {};
-  var B = {};
-  // eslint-disable-next-line no-undef
-  var S = Symbol();
-  var K = 'abcdefghijklmnopqrst';
-  A[S] = 7;
-  K.split('').forEach(function (k) { B[k] = k; });
-  return $assign({}, A)[S] != 7 || Object.keys($assign({}, B)).join('') != K;
-}) ? function assign(target, source) { // eslint-disable-line no-unused-vars
-  var T = toObject(target);
-  var aLen = arguments.length;
-  var index = 1;
-  var getSymbols = gOPS.f;
-  var isEnum = pIE.f;
-  while (aLen > index) {
-    var S = IObject(arguments[index++]);
-    var keys = getSymbols ? getKeys(S).concat(getSymbols(S)) : getKeys(S);
-    var length = keys.length;
-    var j = 0;
-    var key;
-    while (length > j) if (isEnum.call(S, key = keys[j++])) T[key] = S[key];
-  } return T;
-} : $assign;
-
-
-/***/ }),
-
 /***/ "./node_modules/core-js/library/modules/_object-create.js":
 /*!****************************************************************!*\
   !*** ./node_modules/core-js/library/modules/_object-create.js ***!
@@ -9735,21 +9665,6 @@ Iterators.Arguments = Iterators.Array;
 addToUnscopables('keys');
 addToUnscopables('values');
 addToUnscopables('entries');
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/library/modules/es6.object.assign.js":
-/*!*******************************************************************!*\
-  !*** ./node_modules/core-js/library/modules/es6.object.assign.js ***!
-  \*******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// 19.1.3.1 Object.assign(target, source)
-var $export = __webpack_require__(/*! ./_export */ "./node_modules/core-js/library/modules/_export.js");
-
-$export($export.S + $export.F, 'Object', { assign: __webpack_require__(/*! ./_object-assign */ "./node_modules/core-js/library/modules/_object-assign.js") });
 
 
 /***/ }),
@@ -24498,7 +24413,7 @@ module.exports = gql;
   !*** ./node_modules/graphql/error/GraphQLError.mjs ***!
   \*****************************************************/
 /*! exports provided: GraphQLError */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -24649,7 +24564,7 @@ GraphQLError.prototype = Object.create(Error.prototype, {
   !*** ./node_modules/graphql/error/formatError.mjs ***!
   \****************************************************/
 /*! exports provided: formatError */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -24694,7 +24609,7 @@ function formatError(error) {
   !*** ./node_modules/graphql/error/index.mjs ***!
   \**********************************************/
 /*! exports provided: GraphQLError, syntaxError, locatedError, printError, formatError */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -24734,7 +24649,7 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./node_modules/graphql/error/locatedError.mjs ***!
   \*****************************************************/
 /*! exports provided: locatedError */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -24772,7 +24687,7 @@ function locatedError(originalError, nodes, path) {
   !*** ./node_modules/graphql/error/printError.mjs ***!
   \***************************************************/
 /*! exports provided: printError */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -24923,7 +24838,7 @@ function lpad(len, str) {
   !*** ./node_modules/graphql/error/syntaxError.mjs ***!
   \****************************************************/
 /*! exports provided: syntaxError */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -24954,7 +24869,7 @@ function syntaxError(source, position, description) {
   !*** ./node_modules/graphql/jsutils/defineToStringTag.mjs ***!
   \************************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -24998,7 +24913,7 @@ function applyToStringTag(classObject) {
   !*** ./node_modules/graphql/jsutils/inspect.mjs ***!
   \**************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -25053,7 +24968,7 @@ function inspect(value) {
   !*** ./node_modules/graphql/jsutils/invariant.mjs ***!
   \****************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -25080,7 +24995,7 @@ function invariant(condition, message) {
   !*** ./node_modules/graphql/language/blockStringValue.mjs ***!
   \************************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -25159,7 +25074,7 @@ function isBlank(str) {
   !*** ./node_modules/graphql/language/directiveLocation.mjs ***!
   \*************************************************************/
 /*! exports provided: DirectiveLocation */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -25210,7 +25125,7 @@ var DirectiveLocation = Object.freeze({
   !*** ./node_modules/graphql/language/kinds.mjs ***!
   \*************************************************/
 /*! exports provided: Kind */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -25294,7 +25209,7 @@ var Kind = Object.freeze({
   !*** ./node_modules/graphql/language/lexer.mjs ***!
   \*************************************************/
 /*! exports provided: createLexer, TokenKind, getTokenDesc */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -25943,7 +25858,7 @@ function readName(source, start, line, col, prev) {
   !*** ./node_modules/graphql/language/location.mjs ***!
   \****************************************************/
 /*! exports provided: getLocation */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -25989,7 +25904,7 @@ function getLocation(source, position) {
   !*** ./node_modules/graphql/language/parser.mjs ***!
   \**************************************************/
 /*! exports provided: parse, parseValue, parseType, parseConstValue, parseTypeReference, parseNamedType */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -27518,7 +27433,7 @@ function many(lexer, openKind, parseFn, closeKind) {
   !*** ./node_modules/graphql/language/printer.mjs ***!
   \***************************************************/
 /*! exports provided: print */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -27842,7 +27757,7 @@ function printBlockString(value, isDescription) {
   !*** ./node_modules/graphql/language/source.mjs ***!
   \**************************************************/
 /*! exports provided: Source */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -27896,7 +27811,7 @@ Object(_jsutils_defineToStringTag__WEBPACK_IMPORTED_MODULE_1__["default"])(Sourc
   !*** ./node_modules/graphql/language/visitor.mjs ***!
   \***************************************************/
 /*! exports provided: QueryDocumentKeys, BREAK, visit, visitInParallel, visitWithTypeInfo, getVisitFn */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -30393,6 +30308,7 @@ var NEXT_HEAD_IDENTIFIER = 'next-head';
 function defaultHead() {
   var className = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : NEXT_HEAD_IDENTIFIER;
   return [_react.default.createElement("meta", {
+    key: "charSet",
     charSet: "utf-8",
     className: className
   })];
@@ -30409,9 +30325,11 @@ function reduceComponents(components) {
     }
 
     return a.concat(b);
-  }, []).reverse().concat(defaultHead('')).filter(Boolean).filter(unique()).reverse().map(function (c) {
+  }, []).reverse().concat(defaultHead('')).filter(Boolean).filter(unique()).reverse().map(function (c, i) {
     var className = (c.props && c.props.className ? c.props.className + ' ' : '') + NEXT_HEAD_IDENTIFIER;
+    var key = c.key || i;
     return _react.default.cloneElement(c, {
+      key: key,
       className: className
     });
   });
@@ -30637,17 +30555,14 @@ function withSideEffect(reduceComponentsToState, handleStateChangeOnClient, mapS
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
+
 
 var _interopRequireDefault = __webpack_require__(/*! @babel/runtime-corejs2/helpers/interopRequireDefault */ "./node_modules/@babel/runtime-corejs2/helpers/interopRequireDefault.js");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.warn = warn;
 exports.execOnce = execOnce;
-exports.deprecated = deprecated;
-exports.printAndExit = printAndExit;
 exports.getDisplayName = getDisplayName;
 exports.isResSent = isResSent;
 exports.loadGetInitialProps = loadGetInitialProps;
@@ -30657,14 +30572,6 @@ exports.getURL = getURL;
 var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/regenerator */ "./node_modules/@babel/runtime-corejs2/regenerator/index.js"));
 
 var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/helpers/asyncToGenerator */ "./node_modules/@babel/runtime-corejs2/helpers/asyncToGenerator.js"));
-
-var _assign = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/core-js/object/assign */ "./node_modules/@babel/runtime-corejs2/core-js/object/assign.js"));
-
-function warn(message) {
-  if (true) {
-    console.error(message);
-  }
-}
 
 function execOnce(fn) {
   var _this = this;
@@ -30681,42 +30588,6 @@ function execOnce(fn) {
       fn.apply(_this, args);
     }
   };
-}
-
-function deprecated(fn, message) {
-  // else is used here so that webpack/uglify will remove the code block depending on the build environment
-  if (false) {} else {
-    var warned = false;
-
-    var newFn = function newFn() {
-      if (!warned) {
-        warned = true;
-        console.error(message);
-      }
-
-      for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-        args[_key2] = arguments[_key2];
-      }
-
-      return fn.apply(this, args);
-    }; // copy all properties
-
-
-    (0, _assign.default)(newFn, fn);
-    return newFn;
-  }
-}
-
-function printAndExit(message) {
-  var code = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-
-  if (code === 0) {
-    console.log(message);
-  } else {
-    console.error(message);
-  }
-
-  process.exit(code);
 }
 
 function getDisplayName(Component) {
@@ -30814,7 +30685,6 @@ function getURL() {
   var origin = getLocationOrigin();
   return href.substring(origin.length);
 }
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../process/browser.js */ "./node_modules/process/browser.js")))
 
 /***/ }),
 
@@ -39096,7 +38966,7 @@ var OrderPage = function OrderPage(props) {
 
 /***/ }),
 
-/***/ 5:
+/***/ 4:
 /*!******************************!*\
   !*** multi ./pages/order.js ***!
   \******************************/
@@ -39121,5 +38991,5 @@ module.exports = dll_5d62d38be3592dca3a42;
 
 /***/ })
 
-},[[5,"static/runtime/webpack.js"]]]));;
+},[[4,"static/runtime/webpack.js"]]]));;
 //# sourceMappingURL=order.js.map
